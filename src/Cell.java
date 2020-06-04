@@ -1,4 +1,6 @@
+import java.awt.Color;
 public class Cell {
+
 
   private Color color;
   private String imageFileName;

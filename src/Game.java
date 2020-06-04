@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /* Game Class Starter File
  * Last Edit: 5/25/2020
  */
@@ -9,11 +11,12 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String userPic = "images/user.gif";
+  private String userPic = "images/Mario.png";
   
   public Game() {
 
     grid = new Grid(10, 5);
+    grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
     msElapsed = 0;
     timesGet = 0;

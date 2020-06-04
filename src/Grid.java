@@ -4,7 +4,8 @@
  * Includes ability to move and scale the background image
  */
 
-import java.awt.*;
+import java.awt.*;  
+import java.awt.Color;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
@@ -46,7 +47,7 @@ public class Grid extends JComponent implements KeyListener, MouseListener
 	{
 		
 		init(numRows, numCols);		
-		setBackground(imageName);
+		setBackgroundImage(imageName);
 
 	}
 	public Grid(String imageFileName)
@@ -62,7 +63,7 @@ public class Grid extends JComponent implements KeyListener, MouseListener
 	 * setColor() is disabled
 	 * @param imgName 
 	 */
-	public void setBackground(String imgName)
+	public void setBackgroundImage(String imgName)
 	{
 
 		this.xOffset = 0;
