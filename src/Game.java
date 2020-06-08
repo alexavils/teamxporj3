@@ -12,6 +12,7 @@ public class Game {
   private int timesGet;
   private int timesAvoid;
   private String userPic = "images/Mario.png";
+  private String getPic = "images/get.gif";
   
   public Game() {
 
@@ -67,7 +68,8 @@ public class Game {
   }
   
   public void populateRightEdge(){
-
+  int lastCol = grid.getNumCols();
+  
   }
   
   public void scrollLeft(){
