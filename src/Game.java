@@ -62,7 +62,21 @@ public class Game {
 
   }
     //if I push down arrow, then plane goes down
+    if(key == 83 && userRow != 9){
+      //check case where out of bounds
 
+      //change the field for userrow
+
+      userRow++;
+
+      //shift the user picture up in the array
+      Location loc = new Location(userRow, 0);
+      grid.setImage(loc, userPic);
+      
+      Location oldLoc = new Location(userRow-1, 0);
+      grid.setImage(oldLoc, null);
+
+}
 
   }
   
