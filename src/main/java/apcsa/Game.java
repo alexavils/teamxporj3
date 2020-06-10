@@ -17,6 +17,7 @@ public class Game {
   private int timesAvoid;
   private String[] userPic = {"images/Mario.png","images/Mario.png","images/Mario.png"};
   private int stage = 0;
+  private String getPic = "images/get.gif";
   
   public Game() {
 
@@ -111,7 +112,8 @@ else stage = 3;
 
 
   public void populateRightEdge(){
-
+  int lastCol = grid.getNumCols();
+  
   }
   
   public void scrollLeft(){
