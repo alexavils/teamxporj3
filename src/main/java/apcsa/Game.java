@@ -1,4 +1,4 @@
-package main.java.apcsa;
+package apcsa;
 
 import java.awt.Color;
 
@@ -84,21 +84,7 @@ public class Game {
       grid.setImage(oldLoc, null);
 
 }
-if(key == 68 && userRow != 3){
-  //check case where out of bounds
 
-  //change the field for userrow
-
-  userRow++;
-
-  //shift the user picture up in the array
-  Location loc = new Location(userRow, 0);
-  grid.setImage(loc, userPic[stage]);
-  
-  Location oldLoc = new Location(userRow+1, 0);
-  grid.setImage(oldLoc, null);
-
-}
   }
 public void updateStage(){
 
