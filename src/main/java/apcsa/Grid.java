@@ -1,4 +1,4 @@
-package main.java.apcsa;
+package apcsa;
 
 /*
  * Updated version of Grid class

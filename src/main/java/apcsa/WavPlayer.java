@@ -1,4 +1,4 @@
-package main.java.apcsa;
+package apcsa;
 
 /* Class that plays .wav files in the background:
  *  Last Edit Date: 5/25/2020
