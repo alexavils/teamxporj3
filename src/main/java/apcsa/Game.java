@@ -1,5 +1,8 @@
+package apcsa;
+
 import java.awt.Color;
 
+//import org.graalvm.compiler.phases.common.NodeCounterPhase.Stage;
 
 /* Game Class Starter File
  * Last Edit: 5/25/2020
@@ -59,7 +62,7 @@ public class Game {
 
         //shift the user picture up in the array
         Location loc = new Location(userRow, 0);
-        grid.setImage(loc, userPic);
+        grid.setImage(loc, userPic[stage]);
         
         Location oldLoc = new Location(userRow+1, 0);
         grid.setImage(oldLoc, null);
@@ -75,7 +78,7 @@ public class Game {
 
       //shift the user picture up in the array
       Location loc = new Location(userRow, 0);
-      grid.setImage(loc, userPic);
+      grid.setImage(loc, userPic[stage]);
       
       Location oldLoc = new Location(userRow-1, 0);
       grid.setImage(oldLoc, null);
@@ -86,8 +89,8 @@ public class Game {
 public void updateStage(){
 
 if(msElapsed < 30000 ) stage = 0;
-else if{msElapsed < 60000} stage = 1;
-else if{msElapsed < 90000} stage = 2;
+else if (msElapsed < 60000) stage = 1;
+else if (msElapsed < 90000) stage = 2;
 else stage = 3;
 
 }
