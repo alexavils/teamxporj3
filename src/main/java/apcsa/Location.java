@@ -1,5 +1,4 @@
-package apcsa;
-
+package main.java.apcsa;
 public class Location {
 
   private int row;

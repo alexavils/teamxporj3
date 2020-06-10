@@ -1,4 +1,4 @@
-package apcsa;
+package main.java.apcsa;
 
 import java.awt.Color;
 public class Cell {
