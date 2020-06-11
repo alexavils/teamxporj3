@@ -91,7 +91,7 @@ if(key == 68 && userCol != 4){
 
   //change the field for userrow
   userCol--;
-  userRow--;
+
  
   //shift the user picture up in the array
 
@@ -100,12 +100,6 @@ if(key == 68 && userCol != 4){
   
    Location oldLoc = new Location(userCol-1, 0);
   grid.setImage(oldLoc, null);
-
-  Location lock = new Location(userRow, 0);
-  grid.setImage(lock, userPic[stage]);
-  
-  Location oldLock = new Location(userRow-1, 0);
-  grid.setImage(oldLock, null);
 
 
 }
@@ -128,20 +122,34 @@ else stage = 3;
   
   public void scrollLeft(){
 
+    //get the last column
+
     int lastCol = grid.getNumCols()-1;
     int lastRow = grid.getNumRows() - 1;
 
+    //loop through each column
+    for(int c = 0; c < lastCol; c++){
+
     //right and left collumn 
-    int rightCol = 9;
-    int leftCol = 8;
+    int rightCol = c+1;
+    int leftCol = c;
 
     //loop through each row
     for ( int r = 0; r <= lastRow; r++ ){
     
     //move items from right to left
+    Location rightloc = new Location(r, rightCol);
+    Location leftLoc = new Location(r, leftCol);
+
+    //copy picture
+   String rightPic = grid.getImage(rightloc);
+    grid.setImage(leftLoc, rightPic );
+
+    //erase old picture
+    grid.setImage(rightloc, null);
 
     }
-
+  }
   }
   
   public void handleCollision(Location loc) {
