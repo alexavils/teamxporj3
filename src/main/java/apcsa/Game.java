@@ -12,6 +12,7 @@ public class Game {
 
   private Grid grid;
   private int userRow;
+  private int userCol;
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
@@ -24,6 +25,7 @@ public class Game {
     grid = new Grid(10, 5);
     grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
+    userCol = 2;
     msElapsed = 0;
     timesGet = 0;
     timesAvoid = 0;
@@ -48,7 +50,7 @@ public class Game {
   
   public void handleKeyPress(){
 
-    //check last key pressed
+   //check last key pressed
     int key = grid.checkLastKeyPressed();
     System.out.println(key);
 
@@ -84,7 +86,29 @@ public class Game {
       grid.setImage(oldLoc, null);
 
 }
+if(key == 68 && userCol != 4){
+  //check case where out of bounds
 
+  //change the field for userrow
+  userCol--;
+  userRow--;
+ 
+  //shift the user picture up in the array
+
+  Location loc = new Location(userCol, 0);
+  grid.setImage(loc, userPic[stage]);
+  
+   Location oldLoc = new Location(userCol-1, 0);
+  grid.setImage(oldLoc, null);
+
+  Location lock = new Location(userRow, 0);
+  grid.setImage(lock, userPic[stage]);
+  
+  Location oldLock = new Location(userRow-1, 0);
+  grid.setImage(oldLock, null);
+
+
+}
   }
 public void updateStage(){
 
