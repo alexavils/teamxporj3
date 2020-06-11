@@ -128,6 +128,20 @@ else stage = 3;
   
   public void scrollLeft(){
 
+    int lastCol = grid.getNumCols()-1;
+    int lastRow = grid.getNumRows() - 1;
+
+    //right and left collumn 
+    int rightCol = 9;
+    int leftCol = 8;
+
+    //loop through each row
+    for ( int r = 0; r <= lastRow; r++ ){
+    
+    //move items from right to left
+
+    }
+
   }
   
   public void handleCollision(Location loc) {
