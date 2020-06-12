@@ -88,7 +88,7 @@ public class Game {
       grid.setImage(oldLoc, null);
 
 }
-if(key == 68 && userCol != 4){
+if(key == 68 && userCol != grid.getNumCols()/2){
   //check case where out of bounds
 
   //change the field for userrow
@@ -97,15 +97,15 @@ if(key == 68 && userCol != 4){
  
   //shift the user picture up in the array
 
-  Location loc = new Location(userRow, userCol-1);
+  Location loc = new Location(userRow, userCol);
   grid.setImage(loc, userPic[stage]);
   
-   Location oldLoc = new Location(userRow, userCol+1);
+   Location oldLoc = new Location(userRow, userCol-1);
   grid.setImage(oldLoc, null);
 
 
 }
-if(key == 65 && userCol != 4){
+if(key == 65 && userCol != 0){
   //check case where out of bounds
 
   //change the field for userrow
@@ -114,10 +114,10 @@ if(key == 65 && userCol != 4){
  
   //shift the user picture up in the array
 
-  Location loc = new Location(userRow, userCol+1);
+  Location loc = new Location(userRow, userCol);
   grid.setImage(loc, userPic[stage]);
   
-   Location oldLoc = new Location(userRow, userCol-1);
+   Location oldLoc = new Location(userRow, userCol+1);
   grid.setImage(oldLoc, null);
 
 
