@@ -117,6 +117,10 @@ else stage = 3;
 
   public void populateRightEdge(){
   int lastCol = grid.getNumCols();
+
+
+
+
   
   }
   
@@ -128,7 +132,7 @@ else stage = 3;
     int lastRow = grid.getNumRows() - 1;
 
     //loop through each column
-    for(int c = 0; c < lastCol; c++){
+    for(int c = 1; c < lastCol; c++){
 
     //right and left collumn 
     int rightCol = c+1;
