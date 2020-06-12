@@ -25,7 +25,6 @@ public class Game {
     grid = new Grid(10, 5);
     grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
-    userCol = 2;
     msElapsed = 0;
     timesGet = 0;
     timesAvoid = 0;
@@ -90,15 +89,15 @@ if(key == 68 && userCol != 4){
   //check case where out of bounds
 
   //change the field for userrow
-  userCol--;
-
+  userCol++;
+  
  
   //shift the user picture up in the array
 
-  Location loc = new Location(userCol, 0);
+  Location loc = new Location(userRow, userCol);
   grid.setImage(loc, userPic[stage]);
   
-   Location oldLoc = new Location(userCol-1, 0);
+   Location oldLoc = new Location(userRow-1, userCol);
   grid.setImage(oldLoc, null);
 
 
@@ -117,8 +116,6 @@ else stage = 3;
 
   public void populateRightEdge(){
   int lastCol = grid.getNumCols();
-
-
 
 
   
