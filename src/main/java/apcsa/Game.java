@@ -31,7 +31,7 @@ public class Game {
     timesGet = 0;
     timesAvoid = 0;
     updateTitle();
-    grid.setImage(new Location(userRow, 0), userPic[stage]);
+    //grid.setImage(new Location(userRow, 0), userPic[stage]);
     grid.fullscreen();
   }
   
@@ -65,10 +65,10 @@ public class Game {
         userRow--;
 
         //shift the user picture up in the array
-        Location loc = new Location(userRow, 0);
+        Location loc = new Location(userRow, userCol);
         grid.setImage(loc, userPic[stage]);
         
-        Location oldLoc = new Location(userRow+1, 0);
+        Location oldLoc = new Location(userRow+1, userCol);
         grid.setImage(oldLoc, null);
 
   }
@@ -81,10 +81,10 @@ public class Game {
       userRow++;
 
       //shift the user picture up in the array
-      Location loc = new Location(userRow, 0);
+      Location loc = new Location(userRow, userCol);
       grid.setImage(loc, userPic[stage]);
       
-      Location oldLoc = new Location(userRow-1, 0);
+      Location oldLoc = new Location(userRow-1, userCol);
       grid.setImage(oldLoc, null);
 
 }
@@ -181,13 +181,17 @@ else if(rando < .05 ){
 
     //copy picture
    String rightPic = grid.getImage(rightloc);
+   if(!userPic[stage].equals(rightPic))
     grid.setImage(leftLoc, rightPic );
 
     //erase old picture
     grid.setImage(rightloc, null);
 
     }
+
   }
+
+  grid.setImage(new Location(userRow, userCol), userPic[stage]);
   }
   
   public void handleCollision(Location loc) {
