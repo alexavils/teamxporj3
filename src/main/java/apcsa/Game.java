@@ -98,9 +98,23 @@ else stage = 3;
 
 
   public void populateRightEdge(){
-  int lastCol = grid.getNumCols();
-  
-  }
+  int lastCol = grid.getNumCols() - 1;
+  int lastRow  = grid.getNumRows() - 1;
+
+  for( int r = 0; r <= lastRow; r++){
+
+ Location loc = new Location(r,lastCol);
+
+ double rando = Math.random();
+ double thresh = .3;
+
+ if(rando < thresh){
+
+grid.setImage(loc, this.getPic);
+
+}
+}
+}
   
   public void scrollLeft(){
 
