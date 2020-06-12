@@ -94,10 +94,10 @@ if(key == 68 && userCol != 4){
  
   //shift the user picture up in the array
 
-  Location loc = new Location(userRow, userCol);
+  Location loc = new Location(userRow, userCol+1);
   grid.setImage(loc, userPic[stage]);
   
-   Location oldLoc = new Location(userRow-1, userCol);
+   Location oldLoc = new Location(userRow, userCol-1);
   grid.setImage(oldLoc, null);
 
 
@@ -111,8 +111,6 @@ else if (msElapsed < 90000) stage = 2;
 else stage = 3;
 
 }
-
-
 
   public void populateRightEdge(){
   int lastCol = grid.getNumCols() - 1;
