@@ -17,12 +17,13 @@ public class Game {
   private int timesGet;
   private int timesAvoid;
   private String[] userPic = {"images/Mario.png","images/Mario.png","images/Mario.png"};
+  private String[] empic = {"images/avoid.gif","images/avoid.gif","images/avoid.gif"};
+  private String[] gudpic = {"images/get.gif","images/get.gif","images/get.gif"};
   private int stage = 0;
-  private String getPic = "images/get.gif";
   
   public Game() {
 
-    grid = new Grid(10, 5);
+    grid = new Grid(10, 20);
     grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
     userCol = 2;
@@ -31,6 +32,7 @@ public class Game {
     timesAvoid = 0;
     updateTitle();
     grid.setImage(new Location(userRow, 0), userPic[stage]);
+    grid.fullscreen();
   }
   
   public void play() {
@@ -124,11 +126,16 @@ else stage = 3;
  Location loc = new Location(r,lastCol);
 
  double rando = Math.random();
- double thresh = .3;
+ double thresh = .01;
 
  if(rando < thresh){
 
-grid.setImage(loc, this.getPic);
+grid.setImage(loc, this.gudpic[stage]);
+
+}
+else if(rando < .05 ){
+
+  grid.setImage(loc, this.empic[stage]);
 
 }
 }
@@ -167,7 +174,7 @@ grid.setImage(loc, this.getPic);
   }
   
   public void handleCollision(Location loc) {
-
+  
   }
   
   public int getScore() {
