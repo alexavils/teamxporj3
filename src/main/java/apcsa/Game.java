@@ -16,7 +16,7 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String[] userPic = {"images/Mario.png","images/Mario.png","images/Mario.png"};
+  private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
   private String[] empic = {"images/avoid.gif","images/avoid.gif","images/avoid.gif"};
   private String[] gudpic = {"images/get.gif","images/get.gif","images/get.gif"};
   private int stage = 0;
