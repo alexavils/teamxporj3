@@ -37,6 +37,7 @@ public class Game {
   
   public void play() {
 
+
     while (!isGameOver()) {
       grid.pause(100);
       handleKeyPress();
@@ -48,6 +49,7 @@ public class Game {
       updateStage();
       msElapsed += 100;
     }
+    grid.showMessageDialog("Congrats you have reached the end Thanks for Playing");
   }
   
   public void handleKeyPress(){
@@ -127,7 +129,8 @@ if(key == 65 && userCol != 0){
   }
 public void updateStage(){
 
-if(msElapsed < 30000 ) stage = 0;
+
+if(msElapsed < 30000 )  stage = 0;
 else if (msElapsed < 60000) stage = 1;
 else if (msElapsed < 90000) stage = 2; 
 else stage = 3;
