@@ -31,34 +31,22 @@
 
   <build>
     <finalName>TeamX</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
+    
+    <plugins>
         <!-- The .JAR file will execute by finding the main() method in the Game class -->
-<!-- 
-            <resources>
-              <resource>
-                <directory>src/main/java/apcsa/images</directory>
-                <filtering>true</filtering>
-              </resource>
-              <resource>
-                <directory>src/main/java/apcsa/audio</directory>
-                <filtering>true</filtering>
-              </resource>
-            </resources> -->
-
-
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -71,12 +59,11 @@
         
         </plugin>
         
-        <plugin>
+        <!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
-        </plugin>
-        
+        </plugin> -->
         
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -84,30 +71,31 @@
           <version>3.0.2</version>
         </plugin>
         
-        
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
         </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
+
+        <!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
-        </plugin>
-        <plugin>
+        </plugin> -->
+        
+        <!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
-        </plugin>
+        </plugin> -->
 
-<!-- <plugin>
+<plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>3.3.0</version>
@@ -121,11 +109,9 @@
             <phase>package</phase>
             <goals><goal>single</goal></goals>
           </execution></executions>
-</plugin> -->
+</plugin>
 
-
-
-        <plugin>
+        <!-- <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <executions>
@@ -141,9 +127,10 @@
                     </configuration>
                 </execution>
             </executions>
-        </plugin>
+        </plugin> -->
 
       </plugins>
-    </pluginManagement>
+
   </build>
+
 </project>

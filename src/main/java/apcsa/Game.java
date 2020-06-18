@@ -2,8 +2,6 @@ package apcsa;
 
 import java.awt.Color;
 
-//import org.graalvm.compiler.phases.common.NodeCounterPhase.Stage;
-
 /* Game Class Starter File
  * Last Edit: 5/25/2020
  */
@@ -14,8 +12,6 @@ public class Game {
   private int userRow;
   private int userCol;
   private int msElapsed;
-  private int timesGet;
-  private int timesAvoid;
   private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
   private String[] empic = {"images/avoid.gif","images/avoid.gif","images/avoid.gif"};
   private String[] gudpic = {"images/get.gif","images/get.gif","images/get.gif"};
@@ -28,8 +24,6 @@ public class Game {
     userRow = 3;
     userCol = 0;
     msElapsed = 0;
-    timesGet = 0;
-    timesAvoid = 0;
     updateTitle();
     //grid.setImage(new Location(userRow, 0), userPic[stage]);
     grid.fullscreen();
