@@ -9,14 +9,15 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>teamx</name>
+
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/alexavils/teamxporj3</url>
 
   <properties>
+    <java.version>11</java.version>          <!-- Java 9+ need this!-->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>3.8.0</maven.compiler.source> <!-- Java 9+ need this!-->
+    <maven.compiler.target>3.8.0</maven.compiler.target> <!-- Java 9+ need this!-->
   </properties>
 
   <dependencies>
@@ -29,98 +30,123 @@
   </dependencies>
 
   <build>
+    <finalName>TeamX</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- The .JAR file will execute by finding the main() method in the Game class -->
-        <plugin>
-
-          <groupId>
-            org.apache.maven.plugins
-          </groupId>
-
-          <artifactId>
-            maven-assembly-plugin
-          </artifactId>
-          
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>
-                  apcsa.Game
-                </mainClass>
-              </manifest>
-            </archive>
-            
-            <descriptorRefs>
-              <descriptorRef>
-                jar-with-dependencies
-              </descriptorRef>
-            </descriptorRefs>
-          </configuration>
-          
-          <executions>
-            <execution>
-              <id>
-                make-assembly
-              </id>
-              
-              <!-- this is used for inheritance merges -->
-              <phase>
-                package
-              </phase>
-              
-              <!-- bind to the packaging phase -->
-              <goals>
-                <goal>
-                  single
-                </goal>
-              </goals>
-            </execution>
-          </executions>
-        
-        </plugin>
-
+<!-- 
+            <resources>
+              <resource>
+                <directory>src/main/java/apcsa/images</directory>
+                <filtering>true</filtering>
+              </resource>
+              <resource>
+                <directory>src/main/java/apcsa/audio</directory>
+                <filtering>true</filtering>
+              </resource>
+            </resources> -->
 
 
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
         <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+        
+          <!-- Java 9+ need this!-->
+          <configuration> 
+            <release>11</release>
+            <compilerArgs><arg>--enable-preview</arg></compilerArgs>
+            <forceJavacCompilerUse>true</forceJavacCompilerUse>
+            <parameters>true</parameters>
+          </configuration> 
+        
         </plugin>
+        
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration><argLine>--enable-preview</argLine></configuration>           <!-- Java 9+ need this!-->
         </plugin>
+        
+        
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+        
+        
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
         <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+
+<!-- <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version>
+          <configuration>
+            <descriptorRefs><descriptorRef>jar-with-dependencies</descriptorRef></descriptorRefs>
+            <archive><manifest><mainClass>apcsa.Game</mainClass></manifest></archive>
+          </configuration>
+
+          <executions><execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals><goal>single</goal></goals>
+          </execution></executions>
+</plugin> -->
+
+
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                    <configuration>
+                        <classifier>spring-boot</classifier>
+                        <mainClass>
+                          apcsa.Game
+                        </mainClass>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
       </plugins>
     </pluginManagement>
   </build>
