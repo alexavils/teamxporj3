@@ -14,12 +14,11 @@ public class Game {
   private int userRow;
   private int userCol;
   private int msElapsed;
-  private int timesGet;
-  private int timesAvoid;
   private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
   private String[] empic = {"images/avoid.gif","images/avoid.gif","images/avoid.gif"};
   private String[] gudpic = {"images/get.gif","images/get.gif","images/get.gif"};
   private int stage = 0;
+  private int health = 3;
   
   public Game() {
 
@@ -28,8 +27,6 @@ public class Game {
     userRow = 3;
     userCol = 0;
     msElapsed = 0;
-    timesGet = 0;
-    timesAvoid = 0;
     updateTitle();
     //grid.setImage(new Location(userRow, 0), userPic[stage]);
     grid.fullscreen();
@@ -43,6 +40,7 @@ public class Game {
       if (msElapsed % 300 == 0) {
         scrollLeft();
         populateRightEdge();
+        handleCollision();
       }
       updateTitle();
       updateStage();
@@ -66,6 +64,9 @@ public class Game {
 
         //shift the user picture up in the array
         Location loc = new Location(userRow, userCol);
+        if(empic[stage].equals(grid.getImage(loc))){
+          health -= 1;
+        }
         grid.setImage(loc, userPic[stage]);
         
         Location oldLoc = new Location(userRow+1, userCol);
@@ -194,16 +195,30 @@ else if(rando < .05 ){
   grid.setImage(new Location(userRow, userCol), userPic[stage]);
   }
   
-  public void handleCollision(Location loc) {
+  public void handleCollision() {
+    
+
+
+    //save the location to look at
+    Location dog = new Location(userRow, userCol+1);
+    
+    if(empic[stage].equals(grid.getImage(dog))){
+      health -= 1;
+    }
+    
   
+
+
+
   }
   
   public int getScore() {
-    return 0;
+    return health;
   }
   
   public void updateTitle() {
     grid.setTitle("Game:  " + getScore());
+
   }
   
   public boolean isGameOver() {
