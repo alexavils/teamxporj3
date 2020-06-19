@@ -2,6 +2,8 @@ package apcsa;
 
 import java.awt.Color;
 
+//import org.graalvm.compiler.phases.common.NodeCounterPhase.Stage;
+
 /* Game Class Starter File
  * Last Edit: 5/25/2020
  */
@@ -13,9 +15,10 @@ public class Game {
   private int userCol;
   private int msElapsed;
   private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
-  private String[] empic = {"images/avoid.gif","images/avoid.gif","images/avoid.gif"};
-  private String[] gudpic = {"images/get.gif","images/get.gif","images/get.gif"};
+  private String[] empic = {"images/BuildingBlocks.png","images/Broomstick.png","images/Books.png"};
+  private String[] gudpic = {"images/BabyFood.png","images/SoccerBall.png","images/Phone.png"};
   private int stage = 0;
+  private int health = 3;
   
   public Game() {
 
@@ -38,6 +41,7 @@ public class Game {
       if (msElapsed % 300 == 0) {
         scrollLeft();
         populateRightEdge();
+        handleCollision();
       }
       updateTitle();
       updateStage();
@@ -62,6 +66,9 @@ public class Game {
 
         //shift the user picture up in the array
         Location loc = new Location(userRow, userCol);
+        if(empic[stage].equals(grid.getImage(loc))){
+          health -= 1;
+        }
         grid.setImage(loc, userPic[stage]);
         
         Location oldLoc = new Location(userRow+1, userCol);
@@ -78,6 +85,9 @@ public class Game {
 
       //shift the user picture up in the array
       Location loc = new Location(userRow, userCol);
+      if(empic[stage].equals(grid.getImage(loc))){
+        health -= 1;
+      }
       grid.setImage(loc, userPic[stage]);
       
       Location oldLoc = new Location(userRow-1, userCol);
@@ -191,16 +201,30 @@ else if(rando < .05 ){
   grid.setImage(new Location(userRow, userCol), userPic[stage]);
   }
   
-  public void handleCollision(Location loc) {
+  public void handleCollision() {
+    
+
+
+    //save the location to look at
+    Location dog = new Location(userRow, userCol+1);
+    
+    if(empic[stage].equals(grid.getImage(dog))){
+      health -= 1;
+    }
+    
   
+
+
+
   }
   
   public int getScore() {
-    return 0;
+    return health;
   }
   
   public void updateTitle() {
     grid.setTitle("Game:  " + getScore());
+
   }
   
   public boolean isGameOver() {
