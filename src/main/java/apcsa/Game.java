@@ -83,6 +83,9 @@ public class Game {
 
       //shift the user picture up in the array
       Location loc = new Location(userRow, userCol);
+      if(empic[stage].equals(grid.getImage(loc))){
+        health -= 1;
+      }
       grid.setImage(loc, userPic[stage]);
       
       Location oldLoc = new Location(userRow-1, userCol);
