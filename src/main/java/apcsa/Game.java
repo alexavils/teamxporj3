@@ -19,11 +19,11 @@ public class Game {
   private String[] gudpic = {"images/BabyFood.png","images/SoccerBall.png","images/Phone.png"};
   private String[] gameBackground = {"images/Crib.jpg","images/PreTeen.jpg","images/TeenRoom.png"};
   private int stage = 0;
-  private int health = 3;
+  private double health = 3;
   
   public Game() {
 
-    grid = new Grid(10, 20);
+    grid = new Grid(5, 10);
     grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
     userCol = 0;
@@ -35,7 +35,8 @@ public class Game {
   }
   
   public void play() {
-
+String retryMessage = "yes";
+while(retryMessage.equals("yes")){
 
     while (!isGameOver()) {
       grid.pause(100);
@@ -50,9 +51,14 @@ public class Game {
       updateStage();
       msElapsed += 100;
     }
-    grid.showMessageDialog("Congrats you have reached the end Thanks for Playing");
+ retryMessage = grid.showInputDialog("Do you want to try again? yes no");
+ stage = 0;
+ health = 3;
+ msElapsed = 0;
+ userRow = 3;
+ userCol = 0;
   }
-  
+}
   public void handleKeyPress(){
 
    //check last key pressed
@@ -79,7 +85,7 @@ public class Game {
 
   }
     //if I push down arrow, then plane goes down
-    if(key == 83 && userRow != 9){
+    if(key == 83 && userRow != grid.getNumRows()-1){
       //check case where out of bounds
 
       //change the field for userrow
@@ -171,14 +177,14 @@ public void updateBackground(){
  Location loc = new Location(r,lastCol);
 
  double rando = Math.random();
- double thresh = .01;
+ double thresh = .01 * 3;
 
  if(rando < thresh){
 
 grid.setImage(loc, this.gudpic[stage]);
 
 }
-else if(rando < .05 ){
+else if(rando < .05 * 3 ){
 
   grid.setImage(loc, this.empic[stage]);
 
@@ -233,24 +239,32 @@ else if(rando < .05 ){
       health -= 1;
     }
     
-  
+    if(gudpic[stage].equals(grid.getImage(dog))){
+      health += .25;
+    }
 
 
 
   }
   
-  public int getScore() {
+  public double getScore() {
     return health;
   }
   
   public void updateTitle() {
-    grid.setTitle("Game:  " + getScore());
+    grid.setTitle("GROWING UP        Health:  " + getScore() + "        Time Left Until Stage Shift : " + ((90 - (msElapsed / 1000)) % 30) + " Seconds " + " By : Akex & Jorge ");
 
   }
   
   public boolean isGameOver() {
-    if(stage == 3)
+    if(getScore()<=0){
+    grid.showMessageDialog("Congrats you have failed at Growing Up Please Try Again");
+    return true;  
+  }
+    if(stage == 3){
+    grid.showMessageDialog("Congrats you are now a full Grown Up Thanks For Playing");
     return true;
+    }
     else return false;
   
 }
