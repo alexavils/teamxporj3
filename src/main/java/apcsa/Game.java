@@ -17,7 +17,7 @@ public class Game {
   private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
   private String[] empic = {"images/BuildingBlocks.png","images/Broomstick.png","images/Books.png"};
   private String[] gudpic = {"images/BabyFood.png","images/SoccerBall.png","images/Phone.png"};
-  private String[] Gamebackground = {"images/","images/PreTeen.jpg","images/TeenRoom.png"};
+  private String[] gameBackground = {"images/Crib.jpg","images/PreTeen.jpg","images/TeenRoom.png"};
   private int stage = 0;
   private int health = 3;
   
@@ -31,6 +31,7 @@ public class Game {
     updateTitle();
     //grid.setImage(new Location(userRow, 0), userPic[stage]);
     grid.fullscreen();
+   
   }
   
   public void play() {
@@ -43,6 +44,7 @@ public class Game {
         scrollLeft();
         populateRightEdge();
         handleCollision();
+        updateBackground();
       }
       updateTitle();
       updateStage();
@@ -141,6 +143,24 @@ else if (msElapsed < 90000) stage = 2;
 else stage = 3;
 
 }
+
+public void updateBackground(){
+
+
+  if(msElapsed < 30000 ){
+    grid.setBackgroundImage("Images/Crib.jpg");
+  }
+  else if (msElapsed < 60000){
+    grid.setBackgroundImage("Images/PreTeen.jpg");
+  }
+  else if (msElapsed < 90000){
+    grid.setBackgroundImage("Images/TeenRoom.png");
+  }
+  
+
+
+}
+
 
   public void populateRightEdge(){
   int lastCol = grid.getNumCols() - 1;
