@@ -2,4 +2,5 @@ apcsa\Grid.class
 apcsa\Cell.class
 apcsa\MidiPlayer.class
 apcsa\WavPlayer.class
+apcsa\Game.class
 apcsa\Location.class
