@@ -17,6 +17,7 @@ public class Game {
   private String[] userPic = {"images/Baby.png","images/PreTeen.png","images/Teen.png"};
   private String[] empic = {"images/BuildingBlocks.png","images/Broomstick.png","images/Books.png"};
   private String[] gudpic = {"images/BabyFood.png","images/SoccerBall.png","images/Phone.png"};
+  private String[] Gamebackground = {"images/","images/PreTeen.jpg","images/TeenRoom.png"};
   private int stage = 0;
   private int health = 3;
   
