@@ -23,13 +23,12 @@ public class Game {
   
   public Game() {
 
-    grid = new Grid(5, 10);
+    grid = new Grid(6, 10);
     grid.setBackground(new Color(128, 255, 175));
     userRow = 3;
     userCol = 0;
     msElapsed = 0;
     updateTitle();
-    //grid.setImage(new Location(userRow, 0), userPic[stage]);
     grid.fullscreen();
    
   }
@@ -38,18 +37,43 @@ public class Game {
 String retryMessage = "yes";
 while(retryMessage.equals("yes")){
 
+    int count = 0;
     while (!isGameOver()) {
+      count++;
+      //grid.setTitle(""+count+"in Game");
       grid.pause(100);
+      //grid.setTitle(""+count+"after Pause");
+
       handleKeyPress();
+      //grid.setTitle(""+count+"hkp");
+
       if (msElapsed % 300 == 0) {
+        //grid.setTitle(""+count+"if");
+
         scrollLeft();
+        //grid.setTitle(""+count+"scroll");
+
         populateRightEdge();
-        handleCollision();
-        updateBackground();
+       // grid.setTitle(""+count+"pop");
+
+        handleCollision();       
+        //grid.setTitle(""+count+"coll");
+
+        updateBackground();       
+        //grid.setTitle(""+count+"update");
+
       }
+      //grid.setTitle(""+count+"next");
+
       updateTitle();
+      //grid.setTitle(""+count+"title");
+
       updateStage();
+      //grid.setTitle(""+count+"stage");
+
       msElapsed += 100;
+      //grid.setTitle(""+count+"end");
+
     }
  retryMessage = grid.showInputDialog("Do you want to try again? yes no");
  stage = 0;
@@ -142,26 +166,29 @@ if(key == 65 && userCol != 0){
   }
 public void updateStage(){
 
-
-if(msElapsed < 30000 )  stage = 0;
-else if (msElapsed < 60000) stage = 1;
-else if (msElapsed < 90000) stage = 2; 
-else stage = 3;
-
+  if(msElapsed < 30000 )  {
+    stage = 0;
+  } else if (msElapsed < 60000) {
+    stage = 1;
+  } else if (msElapsed < 90000){
+    stage = 2;
+  } else {
+    stage = 3;
+  }
 }
 
 public void updateBackground(){
 
-
-  if(msElapsed < 30000 ){
-    grid.setBackgroundImage("Images/Crib.jpg");
-  }
-  else if (msElapsed < 60000){
-    grid.setBackgroundImage("Images/PreTeen.jpg");
-  }
-  else if (msElapsed < 90000){
-    grid.setBackgroundImage("Images/TeenRoom.png");
-  }
+  grid.setBackgroundImage(this.gameBackground[stage]);
+  // if(msElapsed < 30000 ){
+    
+  // }
+  // else if (msElapsed < 60000){
+  //   grid.setBackgroundImage("Images/PreTeen.jpg");
+  // }
+  // else if (msElapsed < 90000){
+  //   grid.setBackgroundImage("Images/TeenRoom.png");
+  // }
   
 
 
@@ -252,7 +279,7 @@ else if(rando < .05 * 3 ){
   }
   
   public void updateTitle() {
-    grid.setTitle("GROWING UP        Health:  " + getScore() + "        Time Left Until Stage Shift : " + ((90 - (msElapsed / 1000)) % 30) + " Seconds " + " By : Akex & Jorge ");
+    grid.setTitle("GROWING UP        Health:  " + getScore() + "        Time Left Until Stage Shift : " + ((90 - (msElapsed / 1000)) % 30) + " Seconds " + " By : Alex & Jorge ");
 
   }
   
