@@ -20,6 +20,7 @@ public class Game {
   private String[] gameBackground = {"images/Crib.jpg","images/PreTeen.jpg","images/TeenRoom.png"};
   private int stage = 0;
   private double health = 3;
+  private double speed = 1.0;
   
   public Game() {
 
@@ -40,47 +41,27 @@ while(retryMessage.equals("yes")){
     int count = 0;
     while (!isGameOver()) {
       count++;
-      //grid.setTitle(""+count+"in Game");
-      grid.pause(100);
-      //grid.setTitle(""+count+"after Pause");
-
+      grid.pause((int) (100/speed));
       handleKeyPress();
-      //grid.setTitle(""+count+"hkp");
 
       if (msElapsed % 300 == 0) {
-        //grid.setTitle(""+count+"if");
-
+        handleCollision();
         scrollLeft();
-        //grid.setTitle(""+count+"scroll");
-
-        populateRightEdge();
-       // grid.setTitle(""+count+"pop");
-
-        handleCollision();       
-        //grid.setTitle(""+count+"coll");
-
-        updateBackground();       
-        //grid.setTitle(""+count+"update");
-
+        populateRightEdge();            
+        updateBackground();
       }
-      //grid.setTitle(""+count+"next");
 
       updateTitle();
-      //grid.setTitle(""+count+"title");
-
       updateStage();
-      //grid.setTitle(""+count+"stage");
-
       msElapsed += 100;
-      //grid.setTitle(""+count+"end");
-
     }
- retryMessage = grid.showInputDialog("Do you want to try again? yes no");
- stage = 0;
- health = 3;
- msElapsed = 0;
- userRow = 3;
- userCol = 0;
+
+    retryMessage = grid.showInputDialog("Do you want to try again? yes no");
+    stage = 0;
+    health = 3;
+    msElapsed = 0;
+    userRow = 3;
+    userCol = 0;
   }
 }
   public void handleKeyPress(){
@@ -168,10 +149,13 @@ public void updateStage(){
 
   if(msElapsed < 30000 )  {
     stage = 0;
+    speed = 0.75;
   } else if (msElapsed < 60000) {
     stage = 1;
+    speed = 1.5;
   } else if (msElapsed < 90000){
     stage = 2;
+    speed = 2.0;
   } else {
     stage = 3;
   }
@@ -279,17 +263,17 @@ else if(rando < .05 * 3 ){
   }
   
   public void updateTitle() {
-    grid.setTitle("GROWING UP        Health:  " + getScore() + "        Time Left Until Stage Shift : " + ((90 - (msElapsed / 1000)) % 30) + " Seconds " + " By : Alex & Jorge ");
+    grid.setTitle("GROWING UP        Health:  " + getScore() + "        Time Left Until Stage Shift : " + ((90 - (msElapsed / 1000)) % 30) + " Seconds " + "         By : Alex & Jorge ");
 
   }
   
   public boolean isGameOver() {
     if(getScore()<=0){
-    grid.showMessageDialog("Congrats you have failed at Growing Up Please Try Again");
+    grid.showMessageDialog("Congrats, you have failed at Growing Up! Please Try Again");
     return true;  
   }
     if(stage == 3){
-    grid.showMessageDialog("Congrats you are now a full Grown Up Thanks For Playing");
+    grid.showMessageDialog("Congrats, you are now a full Grown Up! Thanks For Playing");
     return true;
     }
     else return false;
